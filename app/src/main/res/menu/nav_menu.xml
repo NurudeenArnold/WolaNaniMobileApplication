@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"/>
+
+    <item
+        android:id="@+id/OurHistory"
+        android:title="Our History"
+        android:icon="@drawable/baseline_history_24"/>
+
+    <item
+        android:id="@+id/HowWeOperate"
+        android:title="How We Operate"
+        android:icon="@drawable/baseline_engineering_24"/>
+
+    <item
+        android:id="@+id/AboutUs"
+        android:title="About Us"
+        android:icon="@drawable/baseline_emoji_people_24"/>
+
+    <item
+        android:id="@+id/Donate"
+        android:title="Donate"
+        android:icon="@drawable/baseline_volunteer_activism_24"/>
+
+    <item
+        android:id="@+id/Volunteer"
+        android:title="Volunteer"
+        android:icon="@drawable/baseline_handshake_24"/>
+
+    <item
+        android:id="@+id/Contact"
+        android:title="Contact"
+        android:icon="@drawable/baseline_phone_24"/>
+
+    <item
+        android:id="@+id/user"
+        android:title=""
+        android:icon="@drawable/baseline_person_24" />
+</menu>

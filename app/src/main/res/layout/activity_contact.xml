@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OurHistory">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Banner Image -->
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/banner" />
+
+            <!-- Title CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/titleCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CONTACT US"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:padding="16dp"
+                    android:background="@color/white"
+                    android:textColor="#FF0000"
+                    android:textAlignment="center"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Address Title CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/addressTitleCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleCardView">
+
+                <TextView
+                    android:id="@+id/addressTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="16dp"
+                    android:background="@color/white"
+                    android:textColor="#FF0000"
+                    android:textAlignment="center"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Address CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/addressCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressTitleCardView">
+
+                <TextView
+                    android:id="@+id/addressText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Unit 3, Block A, Collingwood Place\n9 Drake Street\nObservatory 7700\nSouth Africa"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#000000"
+                    android:padding="16dp"
+                    android:background="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Phone Title CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/phoneTitleCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressCardView">
+
+                <TextView
+                    android:id="@+id/phoneTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="16dp"
+                    android:background="@color/white"
+                    android:textColor="#FF0000"
+                    android:textAlignment="center"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Phone CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/phoneCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneTitleCardView">
+
+                <TextView
+                    android:id="@+id/phoneText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tel : +27 +21 447 2091\nFax : +27 +21 447 3126"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#000000"
+                    android:padding="16dp"
+                    android:background="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- Postal Address Title CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/postalAddressTitleCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneCardView">
+
+                <TextView
+                    android:id="@+id/postalAddressTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Postal Address"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="16dp"
+                    android:background="@color/white"
+                    android:textColor="#FF0000"
+                    android:textAlignment="center"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Postal Address CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/postalAddressCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/postalAddressTitleCardView">
+
+                <TextView
+                    android:id="@+id/postalAddressText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="P.O.Box 13890\nMowbray 7705\nSouth Africa"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#000000"
+                    android:padding="16dp"
+                    android:background="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Email Title CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/emailTitleCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/postalAddressCardView">
+
+                <TextView
+                    android:id="@+id/emailTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:padding="16dp"
+                    android:background="@color/white"
+                    android:textColor="#FF0000"
+                    android:textAlignment="center"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Email CardView -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/emailCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailTitleCardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Director Email -->
+                    <TextView
+                        android:id="@+id/directorEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Director of Wolanani"
+                        android:textColor="#FF0000"
+                        android:textSize="16sp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="16dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/directorEmailText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="director@wolanani.co.za"
+                        android:textSize="16sp"
+                        android:lineSpacingExtra="4dp"
+                        android:textColor="#000000"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="16dp"
+                        android:background="@color/white" />
+
+                    <!-- Funding/Donations Email -->
+                    <TextView
+                        android:id="@+id/fundingEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Funding/Donations"
+                        android:textColor="#FF0000"
+                        android:textSize="16sp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="16dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/fundingEmailText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="fundraising@wolanani.co.za"
+                        android:textSize="16sp"
+                        android:lineSpacingExtra="4dp"
+                        android:textColor="#000000"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="16dp"
+                        android:background="@color/white" />
+
+                    <!-- Crafts Email -->
+                    <TextView
+                        android:id="@+id/craftsEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Crafts: Info/Orders"
+                        android:textColor="#FF0000"
+                        android:textSize="16sp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="16dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/craftsEmailText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="sales@wolanani.co.za"
+                        android:textSize="16sp"
+                        android:lineSpacingExtra="4dp"
+                        android:textColor="#000000"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="16dp"
+                        android:background="@color/white" />
+
+                    <!-- Info & Admin Email -->
+                    <TextView
+                        android:id="@+id/adminEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Info &amp; Admin"
+                        android:textColor="#FF0000"
+                        android:textSize="16sp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="16dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/adminEmailText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="administrator@wolanani.co.za"
+                        android:textSize="16sp"
+                        android:lineSpacingExtra="4dp"
+                        android:textColor="#000000"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="16dp"
+                        android:background="@color/white" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"/>
+</androidx.drawerlayout.widget.DrawerLayout>

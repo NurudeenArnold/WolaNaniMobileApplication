@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OurHistory">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submitbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#FF0000"
+            android:text="Submit"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/WhatYouDonating"
+            app:layout_constraintStart_toStartOf="@+id/WhatYouDonating"
+            app:layout_constraintTop_toBottomOf="@+id/WhatYouDonating" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFundraisers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FF0000"
+            android:layout_marginTop="40dp"
+            android:text="Donate to Fundraiser"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/submitbtn"
+            app:layout_constraintStart_toStartOf="@+id/submitbtn"
+            app:layout_constraintTop_toBottomOf="@+id/submitbtn" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="7dp"
+            android:text="Donate"
+            android:textColor="#FF0000"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <EditText
+            android:id="@+id/reference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/baseline_star_24"
+            android:drawablePadding="20dp"
+            android:hint="Reference"
+            android:inputType="text"
+            android:padding="20dp"
+            android:textColor="#FF0000"
+            android:textColorHint="#FF0000"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <EditText
+            android:id="@+id/WhatYouDonating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/baseline_volunteer_activism_24_red"
+            android:drawablePadding="20dp"
+            android:hint="What are you donating?"
+            android:inputType="text"
+            android:padding="20dp"
+            android:textColor="#FF0000"
+            android:textColorHint="#FF0000"
+            app:layout_constraintEnd_toEndOf="@+id/reference"
+            app:layout_constraintStart_toStartOf="@+id/reference"
+            app:layout_constraintTop_toBottomOf="@+id/reference" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/banner" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

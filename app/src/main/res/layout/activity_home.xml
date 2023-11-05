@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/VolunteerImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="10dp"
+                android:background="#E91E63"
+                app:layout_constraintEnd_toEndOf="@+id/AboutUsImg"
+                app:layout_constraintStart_toStartOf="@+id/AboutUsImg"
+                app:layout_constraintTop_toBottomOf="@+id/AboutUsBtn"
+                app:srcCompat="@drawable/baseline_handshake_24" />
+
+            <ImageView
+                android:id="@+id/ContactImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="10dp"
+                android:background="#009688"
+                app:layout_constraintEnd_toEndOf="@+id/DonateImg"
+                app:layout_constraintStart_toStartOf="@+id/DonateImg"
+                app:layout_constraintTop_toBottomOf="@+id/DonateBtn"
+                app:srcCompat="@drawable/baseline_call_24" />
+
+            <Button
+                android:id="@+id/DonateBtn"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Donate"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/DonateImg"
+                app:layout_constraintStart_toStartOf="@+id/DonateImg"
+                app:layout_constraintTop_toBottomOf="@+id/DonateImg" />
+
+            <Button
+                android:id="@+id/VolunteerBtn"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Volunteer"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/VolunteerImg"
+                app:layout_constraintStart_toStartOf="@+id/VolunteerImg"
+                app:layout_constraintTop_toBottomOf="@+id/VolunteerImg" />
+
+            <Button
+                android:id="@+id/ContactBtn"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Contact"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/ContactImg"
+                app:layout_constraintStart_toStartOf="@+id/ContactImg"
+                app:layout_constraintTop_toBottomOf="@+id/ContactImg" />
+
+            <ImageView
+                android:id="@+id/DonateImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="10dp"
+                android:background="#3F51B5"
+                app:layout_constraintEnd_toEndOf="@+id/HowWeOperateImg"
+                app:layout_constraintStart_toStartOf="@+id/HowWeOperateImg"
+                app:layout_constraintTop_toBottomOf="@+id/HowWeOperateBtn"
+                app:srcCompat="@drawable/baseline_volunteer_activism_24" />
+
+            <ImageView
+                android:id="@+id/AboutUsImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="10dp"
+                android:background="#00BCD4"
+                app:layout_constraintEnd_toEndOf="@+id/OurHistoryImg"
+                app:layout_constraintStart_toStartOf="@+id/OurHistoryImg"
+                app:layout_constraintTop_toBottomOf="@+id/OurHistoryBtn"
+                app:srcCompat="@drawable/baseline_emoji_people_24" />
+
+            <Button
+                android:id="@+id/AboutUsBtn"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="About Us"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/AboutUsImg"
+                app:layout_constraintStart_toStartOf="@+id/AboutUsImg"
+                app:layout_constraintTop_toBottomOf="@+id/AboutUsImg" />
+
+            <Button
+                android:id="@+id/HowWeOperateBtn"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="How We Operate"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/HowWeOperateImg"
+                app:layout_constraintStart_toStartOf="@+id/HowWeOperateImg"
+                app:layout_constraintTop_toBottomOf="@+id/HowWeOperateImg" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
+
+            <ImageView
+                android:id="@+id/OurHistoryImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:background="#FF0000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:srcCompat="@drawable/baseline_history_24" />
+
+            <ImageView
+                android:id="@+id/HowWeOperateImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="#FFEB3B"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:srcCompat="@drawable/baseline_engineering_24" />
+
+            <Button
+                android:id="@+id/OurHistoryBtn"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Our History"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/OurHistoryImg"
+                app:layout_constraintStart_toStartOf="@+id/OurHistoryImg"
+                app:layout_constraintTop_toBottomOf="@+id/OurHistoryImg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

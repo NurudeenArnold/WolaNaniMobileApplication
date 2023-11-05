@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/Volunteers"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Volunteers"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/VolunteersImg"
+                app:layout_constraintStart_toStartOf="@+id/VolunteersImg"
+                app:layout_constraintTop_toBottomOf="@+id/VolunteersImg" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
+
+            <ImageView
+                android:id="@+id/DonationsImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:background="#FF0000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:srcCompat="@drawable/baseline_volunteer_activism_24" />
+
+            <ImageView
+                android:id="@+id/VolunteersImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="#FFEB3B"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:srcCompat="@drawable/baseline_handshake_24" />
+
+            <ImageView
+                android:id="@+id/FundraisersImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="40dp"
+                android:background="#00BCD4"
+                app:layout_constraintEnd_toEndOf="@+id/DonationsImg"
+                app:layout_constraintStart_toStartOf="@+id/DonationsImg"
+                app:layout_constraintTop_toBottomOf="@+id/Donations"
+                app:srcCompat="@drawable/baseline_attach_money_24_white" />
+
+            <Button
+                android:id="@+id/Fundraisers"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Fundraisers"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/FundraisersImg"
+                app:layout_constraintStart_toStartOf="@+id/FundraisersImg"
+                app:layout_constraintTop_toBottomOf="@+id/FundraisersImg" />
+
+            <ImageView
+                android:id="@+id/AddFundraisersImg"
+                android:layout_width="170dp"
+                android:layout_height="118dp"
+                android:layout_marginTop="40dp"
+                android:background="#3F51B5"
+                app:layout_constraintEnd_toEndOf="@+id/VolunteersImg"
+                app:layout_constraintStart_toStartOf="@+id/VolunteersImg"
+                app:layout_constraintTop_toBottomOf="@+id/Volunteers"
+                app:srcCompat="@drawable/baseline_add_24" />
+
+
+            <Button
+                android:id="@+id/AddFundraisers"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Add Fundraisers"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/AddFundraisersImg"
+                app:layout_constraintStart_toStartOf="@+id/AddFundraisersImg"
+                app:layout_constraintTop_toBottomOf="@+id/AddFundraisersImg" />
+
+            <Button
+                android:id="@+id/Donations"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Donations"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/DonationsImg"
+                app:layout_constraintStart_toStartOf="@+id/DonationsImg"
+                app:layout_constraintTop_toBottomOf="@+id/DonationsImg" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="ADMIN"
+                android:textStyle="bold"
+                android:textSize="50dp"
+                android:textColor="#AA0101"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/admin_nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/admin_nav_menu"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

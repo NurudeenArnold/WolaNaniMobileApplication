@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/donations"
+        android:title="Donations"
+        android:icon="@drawable/baseline_volunteer_activism_24"/>
+
+    <item
+        android:id="@+id/volunteers"
+        android:title="Volunteers"
+        android:icon="@drawable/baseline_handshake_24"/>
+
+    <item
+        android:id="@+id/fundraisers"
+        android:title="Fundraisers"
+        android:icon="@drawable/baseline_attach_money_24"/>
+
+    <item
+        android:id="@+id/addFundraisers"
+        android:title="Add Fundraisers"
+        android:icon="@drawable/baseline_add_24_black"/>
+
+    <item
+        android:id="@+id/user"
+        android:title="Logout from: Admin"
+        android:icon="@drawable/baseline_person_24" />
+</menu>

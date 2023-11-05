@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "528468255970",
+    "project_id": "wolanani-53ae1",
+    "storage_bucket": "wolanani-53ae1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528468255970:android:c513a5a85828e1f7cf2abb",
+        "android_client_info": {
+          "package_name": "com.example.myloginapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528468255970-7sm8cgmlt7ako7muic36jgv23fi8orp6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myloginapp",
+            "certificate_hash": "85b845ad0b70edcce3a0061db908e9439ea9164d"
+          }
+        },
+        {
+          "client_id": "528468255970-0somsnsashjtgnet8p3j4f4ftf34otkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMAuTplUw8izCavPQc5JQnlOvuo6k4gQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528468255970-0somsnsashjtgnet8p3j4f4ftf34otkf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
