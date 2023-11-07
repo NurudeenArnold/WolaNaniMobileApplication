@@ -18,6 +18,7 @@ import javax.crypto.Cipher
 import android.security.keystore.KeyGenParameterSpec
 import android.util.Base64
 import javax.crypto.KeyGenerator
+import at.favre.lib.crypto.bcrypt.BCrypt
 
 
 class Register : AppCompatActivity() {
@@ -76,33 +77,9 @@ class Register : AppCompatActivity() {
             }
         }
     }
-    @RequiresApi(Build.VERSION_CODES.M)
-    fun encryptString(text: String): String {
-        val dataToEncrypt = text.toByteArray(Charsets.UTF_8)
-
-        val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
-        val keySpec = KeyGenParameterSpec.Builder(
-            "myKeyAlias",
-            KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-        ).run {
-            setBlockModes(KeyProperties.BLOCK_MODE_CBC)
-            setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
-            build()
-        }
-        keyGenerator.init(keySpec)
-        val key = keyGenerator.generateKey()
-
-        val cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7)
-
-        cipher.init(Cipher.ENCRYPT_MODE, key)
-        val iv = cipher.iv
-        val encryptedData = cipher.doFinal(dataToEncrypt)
-
-        val combinedData = ByteArray(iv.size + encryptedData.size)
-        System.arraycopy(iv, 0, combinedData, 0, iv.size)
-        System.arraycopy(encryptedData, 0, combinedData, iv.size, encryptedData.size)
-
-        return Base64.encodeToString(combinedData, Base64.DEFAULT)
+    fun encryptString(password: String): String {
+        val hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray())
+        return hashedPassword
     }
 
     private fun isValidEmail(email: String): Boolean {

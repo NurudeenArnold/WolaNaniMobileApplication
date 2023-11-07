@@ -21,6 +21,7 @@ import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
 import javax.crypto.spec.IvParameterSpec
+import at.favre.lib.crypto.bcrypt.BCrypt
 
 class MainActivity : AppCompatActivity() {
     val databaseref = FirebaseDatabase.getInstance().getReferenceFromUrl("https://wolanani-53ae1-default-rtdb.firebaseio.com");
@@ -48,10 +49,11 @@ class MainActivity : AppCompatActivity() {
 
                         if (snapshot.hasChild(phoneNumber)){
 
+                            val hashedPassword: String = snapshot.child(phoneNumber).child("password").getValue(String::class.java) ?: ""
                             val getPassword : String = snapshot.child(phoneNumber).child("password").getValue(String::class.java) ?: ""
                             val getName = snapshot.child(phoneNumber).child("fullName").getValue(String::class.java)
                             val getPhone = snapshot.child(phoneNumber).child("phoneNumber").getValue(String::class.java)
-                            if(decryptString(getPassword) == password.trim()){
+                            if(verifyPassword(password.trim(), hashedPassword)){
                                 Toast.makeText(this@MainActivity,"Successfully Logged in as : $getName.", Toast.LENGTH_SHORT).show()
                                 edtusername.text = ""
                                 edtpassword.text = ""
@@ -100,27 +102,9 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    @RequiresApi(Build.VERSION_CODES.M)
-    fun decryptString(encryptedText: String): String {
-        val combinedData = Base64.decode(encryptedText, Base64.DEFAULT)
-
-        val keyStore = KeyStore.getInstance("AndroidKeyStore")
-        keyStore.load(null)
-
-        val key = keyStore.getKey("myKeyAlias", null) as SecretKey
-
-        val cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7)
-
-        val ivSize = cipher.blockSize
-        val iv = combinedData.copyOfRange(0, ivSize)
-        val encryptedData = combinedData.copyOfRange(ivSize, combinedData.size)
-
-        val ivParameterSpec = IvParameterSpec(iv)
-
-        cipher.init(Cipher.DECRYPT_MODE, key, ivParameterSpec)
-        val decryptedData = cipher.doFinal(encryptedData)
-
-        return String(decryptedData, Charsets.UTF_8)
+    fun verifyPassword(enteredPassword: String, hashedPassword: String): Boolean {
+        val result = BCrypt.verifyer().verify(enteredPassword.toCharArray(), hashedPassword)
+        return result.verified
     }
     override fun onBackPressed() {
 
