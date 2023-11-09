@@ -147,6 +147,9 @@ class DonateFundraiser : AppCompatActivity() {
                     Toast.makeText(this@DonateFundraiser, "Please enter a valid donation amount", Toast.LENGTH_SHORT).show()
                 }
             }
+            else {
+                Toast.makeText(this, "Please pick a Fundraiser", Toast.LENGTH_SHORT).show()
+            }
         }
         drawerLayout = findViewById(R.id.drawerLayout) as DrawerLayout
         navigationView = findViewById(R.id.nav_view) as NavigationView
