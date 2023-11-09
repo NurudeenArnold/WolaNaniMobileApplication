@@ -89,6 +89,7 @@
                 android:background="#30ffffff"
                 android:drawablePadding="20dp"
                 android:hint="Goal"
+                android:drawableLeft="@drawable/red_baseline_attach_money_24"
                 android:inputType="text"
                 android:padding="20dp"
                 android:singleLine="true"

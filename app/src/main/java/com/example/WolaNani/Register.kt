@@ -50,30 +50,33 @@ class Register : AppCompatActivity() {
                 Toast.makeText(this@Register, "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else if (!isValidEmail(emailtxt)) {
                 Toast.makeText(this@Register, "Invalid email format", Toast.LENGTH_SHORT).show()
+            } else if (!isValidPhoneNumber(phonenumbertxt)) {
+                Toast.makeText(this@Register, "Invalid phone number", Toast.LENGTH_SHORT).show()
             } else {
-                // Proceed with user registration
-                databaseref.child("users").addListenerForSingleValueEvent(object : ValueEventListener {
-                    @RequiresApi(Build.VERSION_CODES.M)
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (snapshot.hasChild(phonenumbertxt)) {
-                            Toast.makeText(this@Register, "Phone Number has already been Registered", Toast.LENGTH_SHORT).show()
-                        } else {
-                            databaseref.child("users").child(phonenumbertxt).child("phoneNumber").setValue(phonenumbertxt.trim())
-                            databaseref.child("users").child(phonenumbertxt).child("fullName").setValue(fullnametxt.trim())
-                            databaseref.child("users").child(phonenumbertxt).child("email").setValue(emailtxt.trim())
-                            databaseref.child("users").child(phonenumbertxt).child("password").setValue(encryptString(passwordtxt.trim()))
+                if (!isInvalidPhoneNumber(phonenumbertxt)) {
+                    databaseref.child("users").addListenerForSingleValueEvent(object : ValueEventListener {
+                        @RequiresApi(Build.VERSION_CODES.M)
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.hasChild(phonenumbertxt)) {
+                                Toast.makeText(this@Register, "Phone Number has already been Registered", Toast.LENGTH_SHORT).show()
+                            } else {
+                                databaseref.child("users").child(phonenumbertxt).child("phoneNumber").setValue(phonenumbertxt.trim())
+                                databaseref.child("users").child(phonenumbertxt).child("fullName").setValue(fullnametxt.trim())
+                                databaseref.child("users").child(phonenumbertxt).child("email").setValue(emailtxt.trim())
+                                databaseref.child("users").child(phonenumbertxt).child("password").setValue(encryptString(passwordtxt.trim()))
 
-                            Toast.makeText(this@Register, "User Registered Successfully", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@Register, "User Registered Successfully", Toast.LENGTH_SHORT).show()
 
-                            val intent = Intent(this@Register, MainActivity::class.java)
-                            startActivity(intent)
+                                val intent = Intent(this@Register, MainActivity::class.java)
+                                startActivity(intent)
+                            }
                         }
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        // Handle database error
-                    }
-                })
+                        override fun onCancelled(error: DatabaseError) {
+                        }
+                    })
+                } else {
+                    Toast.makeText(this@Register, "Invalid phone number", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -84,6 +87,13 @@ class Register : AppCompatActivity() {
 
     private fun isValidEmail(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+    private fun isValidPhoneNumber(phoneNumber: String): Boolean {
+        val phoneRegex = Regex("^[0-9]{10}$")
+        return phoneRegex.matches(phoneNumber)
+    }
+    private fun isInvalidPhoneNumber(phoneNumber: String): Boolean {
+        return phoneNumber == "1234567890"
     }
     override fun onBackPressed() {
 

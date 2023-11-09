@@ -19,11 +19,32 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.paypal.checkout.PayPalCheckout
+import com.paypal.checkout.approve.OnApprove
+import com.paypal.checkout.cancel.OnCancel
+import com.paypal.checkout.config.CheckoutConfig
+import com.paypal.checkout.config.Environment
+import com.paypal.checkout.config.SettingsConfig
+import com.paypal.checkout.createorder.CreateOrder
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.OrderIntent
+import com.paypal.checkout.createorder.UserAction
+import com.paypal.checkout.order.Amount
+import com.paypal.checkout.order.AppContext
+import com.paypal.checkout.order.OrderRequest
+import com.paypal.checkout.order.PurchaseUnit
+
 
 class DonateFundraiser : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
+    private val PAYPAL_REQUEST_CODE = 1234
+    private var selectedFundraiserName: String? = null
+    private var totalEntered: Double? = null
+    private val PAYPAL_CLIENT_ID = "AZfrrZHDAOrQnok5caVlfk0KZcrFfbJoNx59JXgIH9PbYS0DI2npINfwiZDyT26KojJsz_D5aZadBT1g"
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate_fundraiser)
@@ -32,8 +53,20 @@ class DonateFundraiser : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.spinner)
         val submit = findViewById<MaterialButton>(R.id.submitbtn)
         val amount = findViewById<TextView>(R.id.Amount)
+        val returnUrl = "com.example.myloginapp://paypalpay"
 
-        var selectedFundraiserName: String? = null
+        val config = CheckoutConfig(
+            application = application,
+            clientId = PAYPAL_CLIENT_ID,
+            environment = Environment.SANDBOX,
+            returnUrl = returnUrl,
+            currencyCode = CurrencyCode.USD,
+            userAction = UserAction.PAY_NOW,
+            settingsConfig = SettingsConfig(
+                loggingEnabled = true
+            )
+        )
+        PayPalCheckout.setConfig(config)
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -57,44 +90,59 @@ class DonateFundraiser : AppCompatActivity() {
                         position: Int,
                         id: Long
                     ) {
-
                         selectedFundraiserName = fundraiserNames[position]
                     }
-
                     override fun onNothingSelected(parent: AdapterView<*>?) {
-
                     }
                 }
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
-
             }
         })
 
         submit.setOnClickListener {
             if (selectedFundraiserName != null) {
                 val totalEnteredStr = amount.text.toString()
-                val totalEntered = totalEnteredStr.toIntOrNull()
+                totalEntered = totalEnteredStr.toDoubleOrNull()
 
                 if (totalEntered != null) {
+                    val createOrder = CreateOrder { createOrderActions ->
+                        val orderRequest = OrderRequest(
+                            intent = OrderIntent.CAPTURE,
+                            appContext = AppContext(userAction = UserAction.PAY_NOW),
+                            purchaseUnitList = listOf(
+                                PurchaseUnit(
+                                    amount = Amount(currencyCode = CurrencyCode.USD, value = totalEntered.toString())
+                                )
+                            )
+                        )
+                        createOrderActions.create(orderRequest)
+                    }
 
-                    databaseReference.child(selectedFundraiserName!!).child("total")
-                        .addListenerForSingleValueEvent(object : ValueEventListener {
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                val currentTotal = dataSnapshot.getValue(Int::class.java) ?: 0
-                                val newTotal = currentTotal + totalEntered
+                    val onApprove = OnApprove { approval ->
+                        approval.orderActions.capture { captureOrderResult ->
+                            val databaseReference = FirebaseDatabase.getInstance().getReference("fundraisers")
+                            val selectedFundraiserRef = databaseReference.child(selectedFundraiserName!!)
 
-                                databaseReference.child(selectedFundraiserName!!)
-                                    .child("total").setValue(newTotal)
+                            selectedFundraiserRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    val currentTotal = dataSnapshot.child("total").getValue(Double::class.java) ?: 0.0
+                                    val newTotal = currentTotal + totalEntered!!
 
-                                val toastMessage = "Thank you for donating to $selectedFundraiserName"
-                                amount.text = ""
-                                Toast.makeText(this@DonateFundraiser, toastMessage, Toast.LENGTH_SHORT).show()
-                            }
-                            override fun onCancelled(databaseError: DatabaseError) {
-                            }
-                        })
+                                    selectedFundraiserRef.child("total").setValue(newTotal)
+                                }
+
+                                override fun onCancelled(databaseError: DatabaseError) {
+                                }
+                            })
+                            Toast.makeText(this@DonateFundraiser, "Donation completed", Toast.LENGTH_SHORT).show()
+                            amount.text = null
+                        }
+                    }
+                    val onCancel = OnCancel {
+                        Toast.makeText(this@DonateFundraiser, "Donation canceled", Toast.LENGTH_SHORT).show()
+                    }
+                    PayPalCheckout.start(createOrder, onApprove, null, onCancel)
                 } else {
                     Toast.makeText(this@DonateFundraiser, "Please enter a valid donation amount", Toast.LENGTH_SHORT).show()
                 }

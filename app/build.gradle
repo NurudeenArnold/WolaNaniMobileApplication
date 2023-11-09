@@ -6,7 +6,7 @@ plugins {
 
 android {
     compileSdkVersion 34
-    buildToolsVersion "30.0.3"
+    namespace 'com.example.WolaNani'
 
     defaultConfig {
         applicationId "com.example.myloginapp"
@@ -28,6 +28,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
 }
 
 dependencies {
@@ -48,6 +52,7 @@ dependencies {
     implementation 'androidx.core:core:1.11.0'
     implementation "androidx.security:security-crypto:1.1.0-alpha03"
     implementation 'at.favre.lib:bcrypt:0.7.0'
+    implementation('com.paypal.checkout:android-sdk:1.1.0')
 
 
 }

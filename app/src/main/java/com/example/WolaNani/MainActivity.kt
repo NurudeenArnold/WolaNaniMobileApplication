@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.security.keystore.KeyProperties
-import android.util.Base64
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -17,10 +15,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.security.KeyStore
-import javax.crypto.Cipher
-import javax.crypto.SecretKey
-import javax.crypto.spec.IvParameterSpec
 import at.favre.lib.crypto.bcrypt.BCrypt
 
 class MainActivity : AppCompatActivity() {
@@ -44,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 databaseref.child("users").addListenerForSingleValueEvent(object : ValueEventListener {
                     @RequiresApi(Build.VERSION_CODES.M)
                     override fun onDataChange(@NonNull snapshot: DataSnapshot) {
-                        val adminUsername = "123"
+                        val adminUsername = "1234567890"
                         val adminPassword = "admin"
 
                         if (snapshot.hasChild(phoneNumber)){

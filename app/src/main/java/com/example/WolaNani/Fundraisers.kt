@@ -44,7 +44,7 @@ class Fundraisers : AppCompatActivity() {
 
                     name?.let { name ->
                         description?.let { description ->
-                            val fundraiser = FundraiserData(name, description, "R "+ goal)
+                            val fundraiser = FundraiserData(name, description, "$ "+ goal)
                             fundraiserList.add(fundraiser)
                         }
                     }

@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
         //implementation 'com.google.firebase:firebase-auth:21.2.0'
-        classpath "com.android.tools.build:gradle:4.2.2"
+        classpath 'com.android.tools.build:gradle:8.1.1'
         classpath 'com.google.gms:google-services:4.3.15'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
@@ -23,6 +23,13 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url  "https://cardinalcommerceprod.jfrog.io/artifactory/android"
+            credentials {
+                username "paypal_sgerritz"
+                password "AKCp8jQ8tAahqpT5JjZ4FRP2mW7GMoFZ674kGqHmupTesKeAY2G8NcmPKLuTxTGkKjDLRzDUQ"
+            }
+        }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }

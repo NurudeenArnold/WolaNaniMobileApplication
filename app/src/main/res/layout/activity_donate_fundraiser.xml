@@ -22,7 +22,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#FF0000"
-                android:text="Submit"
+                android:text="Donate with PayPal"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/Amount"
                 app:layout_constraintStart_toStartOf="@+id/Amount"
@@ -66,6 +66,7 @@
                 android:layout_marginTop="20dp"
                 android:background="#30ffffff"
                 android:drawablePadding="20dp"
+                android:drawableLeft="@drawable/red_baseline_attach_money_24"
                 android:hint="Amount"
                 android:inputType="text"
                 android:padding="20dp"
@@ -75,7 +76,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/spinner"
                 app:layout_constraintStart_toStartOf="@+id/spinner"
                 app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
 
             <ImageView
                 android:id="@+id/imageView3"
