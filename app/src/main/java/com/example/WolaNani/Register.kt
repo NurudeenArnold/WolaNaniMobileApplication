@@ -52,6 +52,8 @@ class Register : AppCompatActivity() {
                 Toast.makeText(this@Register, "Invalid email format", Toast.LENGTH_SHORT).show()
             } else if (!isValidPhoneNumber(phonenumbertxt)) {
                 Toast.makeText(this@Register, "Invalid phone number", Toast.LENGTH_SHORT).show()
+            } else if (passwordtxt.length < 6) {
+                Toast.makeText(this@Register, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show()
             } else {
                 if (!isInvalidPhoneNumber(phonenumbertxt)) {
                     databaseref.child("users").addListenerForSingleValueEvent(object : ValueEventListener {
@@ -79,6 +81,7 @@ class Register : AppCompatActivity() {
                 }
             }
         }
+
     }
     fun encryptString(password: String): String {
         val hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray())

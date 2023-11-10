@@ -100,6 +100,6 @@ class AddFundraiser : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
     override fun onBackPressed() {
-
+        startActivity(Intent(this, adminHome::class.java))
     }
 }

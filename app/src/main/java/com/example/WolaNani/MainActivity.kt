@@ -77,11 +77,8 @@ class MainActivity : AppCompatActivity() {
                         else {
                             Toast.makeText(this@MainActivity, "Wrong Phone Number!", Toast.LENGTH_SHORT).show()
                         }
-
                     }
-
                     override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
                     }
                 })
             }

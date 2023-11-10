@@ -91,6 +91,6 @@ class Volunteers : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
     override fun onBackPressed() {
-
+        startActivity(Intent(this, adminHome::class.java))
     }
 }

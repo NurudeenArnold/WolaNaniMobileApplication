@@ -65,6 +65,6 @@ class AboutUs : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
     override fun onBackPressed() {
-
+        startActivity(Intent(this, Home::class.java))
     }
 }
