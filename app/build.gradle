@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 34
+    compileSdk 34
     namespace 'com.example.WolaNani'
 
     defaultConfig {
@@ -31,7 +31,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
 }
 
 dependencies {
@@ -52,6 +51,5 @@ dependencies {
     implementation "androidx.security:security-crypto:1.1.0-alpha03"
     implementation 'at.favre.lib:bcrypt:0.7.0'
     implementation('com.paypal.checkout:android-sdk:1.1.0')
-
 
 }
